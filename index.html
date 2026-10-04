@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>CAN Vehicle Dashboard</title>
+
+    <link rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="dashboard-header">
+
+        <h1>🚗 CAN Vehicle Dashboard</h1>
+
+        <p class="status">
+            CAN Bus Status:
+            <span>🟢 Connected</span>
+        </p>
+
+    </header>
+
+
+    <!-- ================================
+         VEHICLE PARAMETERS
+    ================================= -->
+
+    <h2>Vehicle Parameters</h2>
+
+    <div class="parameter-container">
+
+        <div class="card">
+
+            <h3>RPM</h3>
+
+            <p id="rpm">2500</p>
+
+            <span>RPM</span>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Temperature</h3>
+
+            <p id="temperature">85</p>
+
+            <span>°C</span>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Battery Voltage</h3>
+
+            <p id="voltage">12.6</p>
+
+            <span>V</span>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Vehicle Speed</h3>
+
+            <p id="speed">60</p>
+
+            <span>km/h</span>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Engine Load</h3>
+
+            <p id="engineLoad">50</p>
+
+            <span>%</span>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Fuel Level</h3>
+
+            <p id="fuelLevel">70</p>
+
+            <span>%</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         CAN BUS MONITOR
+    ================================= -->
+
+    <div class="section">
+
+        <h2>CAN Bus Monitor</h2>
+
+        <div class="can-monitor">
+
+            <p>
+                <strong>CAN ID:</strong>
+                <span id="canId">0x101</span>
+            </p>
+
+            <p>
+                <strong>Data:</strong>
+                <span id="canData">
+                    09 C4 55 4E
+                </span>
+            </p>
+
+            <p>
+                <strong>Message:</strong>
+                <span id="canMessage">
+                    Vehicle Parameter Data
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         CAN MESSAGE LOG
+    ================================= -->
+
+    <div class="section can-log-section">
+
+        <h2>CAN Message Log</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Time</th>
+                        <th>CAN ID</th>
+                        <th>Data</th>
+                        <th>RPM</th>
+                        <th>Temperature</th>
+                        <th>Voltage</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="canLog"></tbody>
+
+            </table>
+
+        </div>
+
+
+        <button id="exportCAN">
+            📥 Export CAN Data
+        </button>
+
+    </div>
+
+
+    <!-- ================================
+         CAN STATISTICS
+    ================================= -->
+
+    <div class="section">
+
+        <h2>CAN Bus Statistics</h2>
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+
+                <h3>Total Messages</h3>
+
+                <p id="messageCount">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Last CAN ID</h3>
+
+                <p id="lastCanId">
+                    ---
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Message Rate</h3>
+
+                <p id="messageRate">
+                    0 msg/s
+                </p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <h3>Bus Status</h3>
+
+                <p id="busStatus">
+                    🟢 Active
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         FAULT DIAGNOSTICS
+    ================================= -->
+
+    <div class="section">
+
+        <h2>Fault Diagnostics</h2>
+
+        <p id="faultStatus">
+            🟢 VEHICLE STATUS: NORMAL
+        </p>
+
+    </div>
+
+
+    <!-- ================================
+         FAULT SUMMARY
+    ================================= -->
+
+    <div class="section">
+
+        <h2>Fault Summary</h2>
+
+        <div class="fault-summary-container">
+
+            <div class="summary-card critical">
+
+                <h3>🔴 Critical Faults</h3>
+
+                <p id="criticalCount">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="summary-card warning">
+
+                <h3>🟡 Warnings</h3>
+
+                <p id="warningCount">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="summary-card normal">
+
+                <h3>🟢 Normal Checks</h3>
+
+                <p id="normalCount">
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         FAULT HISTORY
+    ================================= -->
+
+    <div class="section fault-history">
+
+        <h2>Fault History</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Time</th>
+                        <th>Fault</th>
+                        <th>Value</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="faultLog"></tbody>
+
+            </table>
+
+        </div>
+
+
+        <button id="clearFaults">
+            🗑️ Clear Fault History
+        </button>
+
+    </div>
+
+
+    <!-- ================================
+         LIVE VEHICLE MONITORING
+    ================================= -->
+
+    <div class="section graph-section">
+
+        <div class="monitoring-header">
+
+            <h2>Live Vehicle Monitoring</h2>
+
+            <span class="live-indicator">
+                ● LIVE
+            </span>
+
+        </div>
+
+
+        <!-- RPM -->
+
+        <div class="graph-title">
+
+            <h3>Engine RPM</h3>
+
+            <span>
+                1500 - 3500 RPM
+            </span>
+
+        </div>
+
+        <canvas
+            id="rpmGraph"
+            width="800"
+            height="250">
+        </canvas>
+
+
+        <!-- TEMPERATURE -->
+
+        <div class="graph-title">
+
+            <h3>Engine Temperature</h3>
+
+            <span>
+                70 - 105 °C
+            </span>
+
+        </div>
+
+        <canvas
+            id="temperatureGraph"
+            width="800"
+            height="250">
+        </canvas>
+
+
+        <!-- VOLTAGE -->
+
+        <div class="graph-title">
+
+            <h3>Battery Voltage</h3>
+
+            <span>
+                11.5 - 13.0 V
+            </span>
+
+        </div>
+
+        <canvas
+            id="voltageGraph"
+            width="800"
+            height="250">
+        </canvas>
+
+    </div>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <p>
+            CAN-Based Vehicle Parameter Monitoring
+            & Fault Diagnostic Dashboard
+        </p>
+
+        <p>
+            Final Year ECE Project
+        </p>
+
+    </footer>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

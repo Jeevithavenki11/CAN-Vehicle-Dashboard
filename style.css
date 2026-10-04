@@ -1,0 +1,708 @@
+/* =================================
+   MAIN PAGE
+================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #0f172a;
+
+    color: #e2e8f0;
+
+}
+
+
+/* =================================
+   DASHBOARD
+================================= */
+
+.dashboard {
+
+    width: 92%;
+
+    max-width: 1250px;
+
+    margin: 30px auto;
+
+}
+
+
+/* =================================
+   HEADER
+================================= */
+
+.dashboard-header {
+
+    text-align: center;
+
+}
+
+
+h1 {
+
+    background-color: #020617;
+
+    color: #38bdf8;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid #1e293b;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.4);
+
+}
+
+
+.status {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+}
+
+
+.status span {
+
+    color: #22c55e;
+
+}
+
+
+/* =================================
+   HEADINGS
+================================= */
+
+h2 {
+
+    color: #38bdf8;
+
+    margin-top: 30px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =================================
+   VEHICLE CARDS
+================================= */
+
+.parameter-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(190px, 1fr));
+
+    gap: 20px;
+
+}
+
+
+.card {
+
+    background-color: #1e293b;
+
+    padding: 22px;
+
+    border-radius: 12px;
+
+    border: 1px solid #334155;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.3);
+
+    transition: transform 0.2s;
+
+}
+
+
+.card:hover {
+
+    transform: translateY(-4px);
+
+}
+
+
+.card h3 {
+
+    color: #38bdf8;
+
+    margin-bottom: 10px;
+
+}
+
+
+.card p {
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: #00e5ff;
+
+    margin: 10px;
+
+}
+
+
+.card span {
+
+    color: #cbd5e1;
+
+}
+
+
+/* =================================
+   GENERAL SECTIONS
+================================= */
+
+.section {
+
+    background-color: #1e293b;
+
+    margin-top: 30px;
+
+    padding: 25px;
+
+    border-radius: 12px;
+
+    border: 1px solid #334155;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.3);
+
+}
+
+
+/* =================================
+   CAN MONITOR
+================================= */
+
+.can-monitor {
+
+    background-color: #0f172a;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid #475569;
+
+}
+
+
+.can-monitor p {
+
+    font-size: 18px;
+
+    margin: 15px;
+
+}
+
+
+.can-monitor span {
+
+    color: #00e5ff;
+
+    font-weight: bold;
+
+}
+
+
+/* =================================
+   TABLE
+================================= */
+
+.table-container {
+
+    overflow-x: auto;
+
+}
+
+
+table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+}
+
+
+th,
+td {
+
+    border: 1px solid #475569;
+
+    padding: 12px;
+
+    text-align: center;
+
+}
+
+
+th {
+
+    background-color: #0f172a;
+
+    color: #38bdf8;
+
+}
+
+
+td {
+
+    color: #cbd5e1;
+
+}
+
+
+tr:nth-child(even) {
+
+    background-color: #172033;
+
+}
+
+
+/* =================================
+   BUTTONS
+================================= */
+
+button {
+
+    margin-top: 20px;
+
+    padding: 12px 22px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+#exportCAN {
+
+    background-color: #2563eb;
+
+}
+
+
+#exportCAN:hover {
+
+    background-color: #1d4ed8;
+
+}
+
+
+#clearFaults {
+
+    background-color: #dc2626;
+
+}
+
+
+#clearFaults:hover {
+
+    background-color: #b91c1c;
+
+}
+
+
+/* =================================
+   CAN STATISTICS
+================================= */
+
+.stats-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+
+}
+
+
+.stat-card {
+
+    background-color: #0f172a;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    border: 1px solid #334155;
+
+}
+
+
+.stat-card h3 {
+
+    color: #94a3b8;
+
+}
+
+
+.stat-card p {
+
+    font-size: 26px;
+
+    font-weight: bold;
+
+    color: #00e5ff;
+
+}
+
+
+/* =================================
+   FAULT STATUS
+================================= */
+
+#faultStatus {
+
+    padding: 18px;
+
+    margin: 20px auto;
+
+    max-width: 700px;
+
+    border-radius: 10px;
+
+    background-color: #052e16;
+
+    border: 2px solid #22c55e;
+
+    color: #22c55e;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    transition:
+        background-color 0.3s,
+        color 0.3s,
+        border-color 0.3s;
+
+}
+
+
+/* =================================
+   FAULT SUMMARY
+================================= */
+
+.fault-summary-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 20px;
+
+}
+
+
+.summary-card {
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    background-color: #0f172a;
+
+    border: 1px solid #334155;
+
+}
+
+
+.summary-card h3 {
+
+    margin-bottom: 10px;
+
+}
+
+
+.summary-card p {
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    margin: 10px;
+
+}
+
+
+.summary-card.critical {
+
+    border-color: #ef4444;
+
+}
+
+
+.summary-card.critical h3,
+.summary-card.critical p {
+
+    color: #ef4444;
+
+}
+
+
+.summary-card.warning {
+
+    border-color: #facc15;
+
+}
+
+
+.summary-card.warning h3,
+.summary-card.warning p {
+
+    color: #facc15;
+
+}
+
+
+.summary-card.normal {
+
+    border-color: #22c55e;
+
+}
+
+
+.summary-card.normal h3,
+.summary-card.normal p {
+
+    color: #22c55e;
+
+}
+
+
+/* =================================
+   LIVE MONITORING
+================================= */
+
+.monitoring-header {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.monitoring-header h2 {
+
+    margin: 0;
+
+}
+
+
+.live-indicator {
+
+    background-color: #052e16;
+
+    color: #22c55e;
+
+    border: 1px solid #22c55e;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    animation: livePulse 1.5s infinite;
+
+}
+
+
+@keyframes livePulse {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   GRAPH TITLES
+================================= */
+
+.graph-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    max-width: 800px;
+
+    margin: 25px auto 10px auto;
+
+}
+
+
+.graph-title h3 {
+
+    margin: 0;
+
+    color: #cbd5e1;
+
+    border-left: 4px solid #38bdf8;
+
+    padding-left: 10px;
+
+}
+
+
+.graph-title span {
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+
+/* =================================
+   CANVAS
+================================= */
+
+canvas {
+
+    display: block !important;
+
+    width: 100% !important;
+
+    max-width: 800px;
+
+    height: 250px !important;
+
+    background-color: #0f172a;
+
+    border: 2px solid #38bdf8;
+
+    border-radius: 8px;
+
+    margin: 0 auto 30px auto;
+
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+
+    text-align: center;
+
+    margin: 40px 0 20px 0;
+
+    color: #64748b;
+
+}
+
+
+footer p {
+
+    margin: 5px;
+
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .dashboard {
+
+        width: 95%;
+
+    }
+
+
+    h1 {
+
+        font-size: 24px;
+
+    }
+
+
+    .card p {
+
+        font-size: 30px;
+
+    }
+
+
+    .monitoring-header {
+
+        flex-direction: column;
+
+    }
+
+
+    .graph-title {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        align-items: flex-start;
+
+    }
+
+}
